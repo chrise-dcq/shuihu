@@ -5,12 +5,9 @@
     <string name="action_dianjiang">点将</string>
     <string name="action_help">帮助</string>
     <string name="action_about">关于</string>
-    <string name="action_about_msg">水浒卡108将搜集(全)\n-by peter(QQ:792387725)</string>
-    <string name="action_help_msg">
-    点击卡片可正反翻转\n 
-	左右滑动可切换卡片\n
-	点将菜单可切换将领
-        </string>
+    <string name="action_splash">splash</string>
+    <string name="action_about_msg">水浒卡108将搜集(全)\nQQ:792387725\n技术博客：http://blog.csdn.net/javalive09\n开源项目:https://github.com/javalive09</string>
+    <string name="action_help_msg">1.点击卡片可正反翻转\n2.左右滑动可切换卡片\n3.点将菜单可切换将领</string>
 
     <string-array name="select_jiang">
         <item>	001天魁星呼保义宋江	</item>

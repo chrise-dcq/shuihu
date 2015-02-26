@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -33,7 +34,8 @@ public class MainActivity extends Activity {
     private int[] menuTitleRes = { 
     		R.string.action_dianjiang,
     		R.string.action_help, 
-    		R.string.action_about
+    		R.string.action_about,
+    		R.string.action_splash
             };
 	private static LruCache<Integer, Bitmap> mMemoryCache;
 	private TextView mTitle;
@@ -135,6 +137,9 @@ public class MainActivity extends Activity {
                 case R.string.action_about:
                 	showToast(R.string.action_about_msg);
                     break;
+                case R.string.action_splash:
+                	startActivity(new Intent(MainActivity.this, SplashActivity.class));
+                	break;
                 }
                 mMenu.dismiss();
             }
@@ -149,7 +154,7 @@ public class MainActivity extends Activity {
 
 	
 	private void showSplash() {
-		setContentView(new SplashView(MainActivity.this));
+		setContentView(R.layout.splash);
 		IdleHandler handler = new IdleHandler() {
 
 			@Override
@@ -171,7 +176,7 @@ public class MainActivity extends Activity {
 	}
 	
 	private void showList() {
-		new AlertDialog.Builder(MainActivity.this)
+		new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
         .setTitle(R.string.action_dianjiang)
         .setItems(R.array.select_jiang, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -180,23 +185,6 @@ public class MainActivity extends Activity {
             }
         })
         .create().show();
-	}
-	
-	public class SplashView extends TextView {
-
-		public SplashView(Context context) {
-			super(context);
-			init(context);
-		}
-
-		private void init(Context context) {
-			setText("Loading...");
-			setTextColor(Color.WHITE);
-			setTextSize(50);
-			setBackgroundColor(Color.WHITE);
-			setBackgroundResource(R.drawable.bg);
-			setGravity(Gravity.CENTER);
-		}
 	}
 	
 	private class ImageAdapter extends PagerAdapter {
